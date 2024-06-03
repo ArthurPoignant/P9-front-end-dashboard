@@ -1,0 +1,38 @@
+.counter {
+    position: relative;
+    width: 258px;
+    height: 124px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #FBFBFB;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.counter img {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 32px;
+}
+
+.counter_text {
+    position: absolute;
+    left: 116px;
+}
+
+.counter_text h2{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #282D30;
+}
+
+.counter_text p{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #74798C;
+}

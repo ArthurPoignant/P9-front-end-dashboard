@@ -1,0 +1,30 @@
+.Aside {
+  width: 117px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+  position: relative;
+  float: left;
+}
+
+.Aside p {
+  color: white;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 12px;
+  line-height: 24px;
+  position: absolute;
+  bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.Aside_button {
+    width: 64px;
+    height: 316px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
