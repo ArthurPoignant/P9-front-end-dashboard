@@ -1,21 +1,18 @@
 import './Homepage.css';
-import Navbar from '../component/Navbar';
-import Aside from '../component/Aside';
 import UserActivityAPI from '../component/UserActivityAPI';
 import UserPerformanceAPI from '../component/UserPerformanceAPI';
 import UserAverageAPI from '../component/UserAverageAPI';
 import CounterAPI from '../component/CounterAPI';
 import ScoreAPI from '../component/ScoreAPI';
+import { useParams } from 'react-router';
 
 export default function Homepage() {
     const nom = 'Arthur';
-    const currentUrl = window.location.href;
-    const user = currentUrl.split("/").pop();
+    const user = useParams().userId;
+    console.log(user)
     
     return (
         <>
-            <Navbar />
-            <Aside />
             <main>
                 <h1>Bonjour {nom}</h1>
                 <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
