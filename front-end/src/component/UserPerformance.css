@@ -1,0 +1,11 @@
+tspan {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 12px;
+}
+
+.recharts-polar-grid {
+    width: 150px;
+    height: 50px;
+}

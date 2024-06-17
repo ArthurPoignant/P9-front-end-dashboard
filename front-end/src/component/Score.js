@@ -1,9 +1,9 @@
 import './Score.css';
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
+import { RadialBarChart, RadialBar, ResponsiveContainer, Tooltip } from 'recharts';
 
 const renderCustomizedLabel = ({ viewBox, value }) => {
     const { cx, cy } = viewBox;
-    const percentage = `${(value * 100).toFixed(0)}%`;
+    const percentage = `${(value).toFixed()}%`;
 
     return (
         <>
@@ -18,12 +18,17 @@ const renderCustomizedLabel = ({ viewBox, value }) => {
 };
 
 export default function Score({ rawData }) {    
-    const todayScore = rawData.data.todayScore;
-    const chartData = [{ name: 'todayScore', value: todayScore }];
+    let todayScore = rawData.userData.data.todayScore;
+    if (todayScore === undefined) {
+        todayScore = rawData.userData.data.score;
+    }
+    const chartData = [{ name: 'todayScore', value: todayScore * 100 }];
+    console.log(chartData);
+
 
     return (
         <>
-            <ResponsiveContainer width={258} height={263}>
+            <ResponsiveContainer width={258} height={263} className="score_container">
                 <RadialBarChart
                     cx="50%"
                     cy="50%"
@@ -42,10 +47,11 @@ export default function Score({ rawData }) {
                         fill="#FF0000"
                         cornerRadius={50}
                         label={renderCustomizedLabel}
-                        denominator={100}
+
                     />
-                    <Legend />
+                    
                 </RadialBarChart>
+                <Tooltip></Tooltip>
             </ResponsiveContainer>
         </>
     )

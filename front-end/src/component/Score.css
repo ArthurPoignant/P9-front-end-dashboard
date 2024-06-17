@@ -1,6 +1,4 @@
-.score {
-    width: 258px;
-    height: 263px;
+.score_container {
     background-color: #FBFBFB;
-    border-radius: 10px;
+    border-radius: 15px;
 }

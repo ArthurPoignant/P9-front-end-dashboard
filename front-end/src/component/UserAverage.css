@@ -2,4 +2,28 @@
     background-color: #FF0101;
     border-radius: 10px;
     object-fit: contain;
+    width: 258px;
+  height: 263px;
+}
+
+.custom-tooltip {
+  display: flex;
+  align-items: center;
+}
+
+.tooltip-dot {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  box-shadow: 0 0 5px white;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.tooltip-content {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: black;
+  font-size: 12px;
 }

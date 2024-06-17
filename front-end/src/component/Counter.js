@@ -1,7 +1,7 @@
 import './Counter.css';
 
 
-export default function Counter({ icon, amount, type }) {
+export default function Counter({ rawdata, icon, amount, type }) {
 
     return (
         <>

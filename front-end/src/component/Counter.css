@@ -11,6 +11,12 @@
     margin-bottom: 30px;
 }
 
+@media (max-width: 1270px) {
+    .counter {
+      margin-bottom: 0px; 
+    }
+  }
+
 .counter img {
     width: 60px;
     height: 60px;

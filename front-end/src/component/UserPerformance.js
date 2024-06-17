@@ -10,10 +10,10 @@ export default function UserPerformance({ rawData }) {
     return (
         <>
             <ResponsiveContainer width={258} height={263}>
-                <RadarChart outerRadius={90} data={data} width={258} height={263}>
-                    <PolarGrid gridType="polygon" stroke="#FFFFFF" />
-                    <PolarAngleAxis dataKey="kind" stroke="#FFFFFF" />
-
+                <RadarChart width="50%" height="50%" outerRadius={75}
+                    innerRadius={8} data={data} >
+                    <PolarGrid gridType="polygon" stroke="#FFFFFF" radialLines={false} />
+                    <PolarAngleAxis  dataKey="kind" stroke="#FFFFFF" tickLine={false} />
                     <Radar dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.6} />
                     <Tooltip />
                 </RadarChart>

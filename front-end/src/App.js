@@ -15,10 +15,15 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: "/user/:userId",
+        path: "/user/:id",
         element: <Homepage />,
       },
-      
+      {
+        path: "*",
+        element: <>
+          <h1>Error 404</h1>
+          <p>not found</p></>,
+      },
     ]
   }
 ]);
