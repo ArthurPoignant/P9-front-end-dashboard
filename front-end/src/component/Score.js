@@ -17,14 +17,9 @@ const renderCustomizedLabel = ({ viewBox, value }) => {
     );
 };
 
-export default function Score({ rawData }) {    
-    let todayScore = rawData.userData.data.todayScore;
-    if (todayScore === undefined) {
-        todayScore = rawData.userData.data.score;
-    }
+export default function Score({ rawData }) {   
+    let todayScore = rawData.userData.todayScore;
     const chartData = [{ name: 'todayScore', value: todayScore * 100 }];
-    console.log(chartData);
-
 
     return (
         <>

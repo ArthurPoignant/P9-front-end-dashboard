@@ -2,9 +2,9 @@ import './UserPerformance.css';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar, Tooltip } from 'recharts';
 
 export default function UserPerformance({ rawData }) {
-    const data = rawData.data.data.map(item => ({
+    const data = rawData.data.map(item => ({
         value: item.value,
-        kind: rawData.data.kind[item.kind.toString()]
+        kind: rawData.kind[item.kind.toString()]
     }));
 
     return (

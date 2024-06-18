@@ -3,7 +3,7 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function UserActivity({ rawData }) {
-    const data = rawData.data.sessions.map((item, index) => ({
+    const data = rawData.sessions.map((item, index) => ({
         ...item,
         index: index + 1
     }));

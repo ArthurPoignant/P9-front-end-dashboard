@@ -16,7 +16,7 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 export default function UserAverage({ rawData }) {
-    const data = rawData.data.sessions;
+    const data = rawData.sessions;
 
     return (
         <> 
