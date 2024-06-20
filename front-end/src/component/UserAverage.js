@@ -15,11 +15,24 @@ const CustomTooltip = ({ active, payload }) => {
     return null;
 };
 
+const dayLabels = {
+    1: 'L',
+    2: 'M',
+    3: 'M',
+    4: 'J',
+    5: 'V',
+    6: 'S',
+    7: 'D'
+};
+
+const formatDayLabel = (day) => dayLabels[day] || day;
+
 export default function UserAverage({ rawData }) {
     const data = rawData.sessions;
+    console.log(rawData);
 
     return (
-        <> 
+        <>
             <ResponsiveContainer width={258} height={263}>
                 <AreaChart
                     data={data}
@@ -46,7 +59,12 @@ export default function UserAverage({ rawData }) {
                     />
                     <XAxis
                         dataKey="day"
-                        tick={{ fontSize: 12, fill: '#FFFFFF' }}
+                        tickFormatter={formatDayLabel}
+                        tick={{ 
+                            fontSize: 12, 
+                            fill: '#FFFFFF', 
+                            style: { opacity: 0.5 } 
+                        }}
                         axisLine={{ stroke: 'transparent' }}
                         tickLine={{ stroke: 'transparent' }}
                         tickCount={7}

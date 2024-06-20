@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:3000';
-const USE_MOCK_DATA = process.env.REACT_APP_USE_MOCK_DATA === 'false';
+const USE_MOCK_DATA = process.env.REACT_APP_USE_MOCK_DATA === 'true';
 
 const fetchMockData = async (endpoint, userId) => {
   const response = await fetch(`http://localhost:3001/${endpoint}.json`);

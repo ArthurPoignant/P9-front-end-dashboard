@@ -24,15 +24,11 @@ export default function Homepage() {
         return <div>Loading...</div>;
     }
 
-
-    console.log("aaaaa",userData)
-    console.log("calorie",userData.userData.keyData.calorieCount)
-
     return (
         <>
             <main>
-                <h1>Bonjour <span className='nameRed'>{nom}</span></h1>
-                <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+                <h1 className='homepage-title'>Bonjour <span className='nameRed'>{nom}</span></h1>
+                <p className='homepage-text'>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
                 <div className="stats">
                      <div className='UserActivity'>
                         <UserActivity rawData={userActivityData} />
