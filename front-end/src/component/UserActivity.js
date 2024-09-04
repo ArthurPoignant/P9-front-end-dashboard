@@ -23,6 +23,19 @@ export default function UserActivity({ rawData }) {
         </div>
     );
 
+    const CustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+          return (
+            <div className="custom-tooltip-activity">
+              <p className="custom-tooltip-activity-kg">{`${payload[0].value}kg`}</p>
+              <p className="custom-tooltip-activity-cal">{`${payload[1].value}Kcal`}</p>
+            </div>
+          );
+        }
+      
+        return null;
+      };
+
     return (
         <div className="user-activity-container">
             <div className='top-text'>
@@ -33,7 +46,7 @@ export default function UserActivity({ rawData }) {
                 <BarChart data={data} fill="#FBFBFB" barGap={8}>
                     <CartesianGrid vertical={false} strokeDasharray="3" />
                     <XAxis dataKey="index" tickCount={7} tickSize={0} />
-                    <Tooltip />
+                    <Tooltip content={<CustomTooltip />} />
                     <Bar dataKey="kilogram" fill="#282D30" barSize={7} radius={[10, 10, 0, 0]} />
                     <Bar dataKey="calories" fill="#E60000" barSize={7} radius={[10, 10, 0, 0]} />
                     <YAxis

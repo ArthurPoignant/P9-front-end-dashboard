@@ -67,3 +67,23 @@
     width: 277px;
     height: 25px;
 }
+
+.custom-tooltip-activity {
+  /* width: 39px;
+  height: 63px; */
+  height: 80px; 
+  margin-left: 5px;
+  margin-bottom: 50px;
+  padding: 5px;
+  background-color: red;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.custom-tooltip-activity p {
+  color: white;
+}
