@@ -1,5 +1,5 @@
 import './Score.css';
-import { RadialBarChart, RadialBar, ResponsiveContainer, Tooltip } from 'recharts';
+import { RadialBarChart, RadialBar, ResponsiveContainer, Tooltip, PolarAngleAxis } from 'recharts';
 
 const renderCustomizedLabel = ({ viewBox, value }) => {
     const { cx, cy } = viewBox;
@@ -19,7 +19,7 @@ const renderCustomizedLabel = ({ viewBox, value }) => {
 
 export default function Score({ rawData }) {
     let todayScore = rawData.userData.todayScore;
-    const chartData = [{ name: 'todayScore', value: todayScore * 100 }];
+    const chartData = [{ name: 'todayScore', value: todayScore * 100, fill: '#FF0000' }];
     console.log(chartData)
 
     return (
@@ -35,14 +35,18 @@ export default function Score({ rawData }) {
                     data={chartData}
                     startAngle={90}
                     endAngle={450}
+                    style={{ backgroundColor: '#FFFFFF', clipPath: 'circle(35% at 50% 50%)' }}
                 >
+                    <PolarAngleAxis type='number' domain={[0,100]} angleAxisId={0} tick={false} fill='#FFFFFF'/>
                     <RadialBar
                         minAngle={15}
-                        background
+                        background={{fill:'#FBFBFB'}}
                         clockWise
                         dataKey='value'
                         fill="#FF0000"
                         cornerRadius={50}
+                        angleAxisId={0}
+                        style={{zIndex:-5}}
                         label={renderCustomizedLabel}
 
                     />
