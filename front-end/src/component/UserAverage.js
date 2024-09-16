@@ -29,7 +29,6 @@ const formatDayLabel = (day) => dayLabels[day] || day;
 
 export default function UserAverage({ rawData }) {
     const data = rawData.sessions;
-    console.log(rawData);
 
     return (
         <>

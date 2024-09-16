@@ -1,8 +1,8 @@
 import "./Aside.css";
-import yoga from '../yoga.png';
-import natation from '../natation.png';
-import cyclisme from '../cyclisme.png';
-import musculation from '../musculation.png';
+import yoga from '../assets/yoga.png';
+import natation from '../assets/natation.png';
+import cyclisme from '../assets/cyclisme.png';
+import musculation from '../assets/musculation.png';
 
 export default function Aside() {
     return <>

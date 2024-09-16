@@ -5,23 +5,36 @@ import UserAverage from '../component/UserAverage';
 import Counter from '../component/Counter';
 import Score from '../component/Score';
 import { useParams } from 'react-router';
-import { useUserData, useUserActivity, useUserAverageSessions, useUserPerformance } from '../component/apiService';
-import calories from '../calories-icon.png';
-import carbs from '../carbs-icon.png';
-import fat from '../fat-icon.png';
-import protein from '../protein-icon.png';
-
+import { useState, useEffect } from 'react';
+import { useUserData, useUserActivity, useUserAverageSessions, useUserPerformance } from '../api/apiService';
+import calories from '../assets/calories-icon.png';
+import carbs from '../assets/carbs-icon.png';
+import fat from '../assets/fat-icon.png';
+import protein from '../assets/protein-icon.png';
 
 export default function Homepage() {
     const user = useParams().id;
+    const [isTimeout, setIsTimeout] = useState(false);
     const userData = useUserData(user);
     const userActivityData = useUserActivity(user).activityData;
     const UserAverageSessionsData = useUserAverageSessions(user).averageSessionsData;
     const UserPerformanceData = useUserPerformance(user).userPerformanceData;
     const nom = userData.userData ? userData.userData.userInfos.firstName : '';
 
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setIsTimeout(true);
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+    }, []);
+
+    if (isTimeout && (!userData || !userActivityData || !UserAverageSessionsData || !UserPerformanceData)) {
+        return <div className='error'>Request timeout: The server took too long to respond.</div>;
+    }
+
     if (!userData || !userActivityData || !UserAverageSessionsData || !UserPerformanceData) {
-        return <div>Loading...</div>;
+        return <div className='error'>Loading...</div>;
     }
 
     return (

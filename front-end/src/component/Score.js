@@ -20,7 +20,6 @@ const renderCustomizedLabel = ({ viewBox, value }) => {
 export default function Score({ rawData }) {
     let todayScore = rawData.userData.todayScore;
     const chartData = [{ name: 'todayScore', value: todayScore * 100, fill: '#FF0000' }];
-    console.log(chartData)
 
     return (
         <>

@@ -1,19 +1,20 @@
 /* eslint-disable eqeqeq */
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import User from '../models/User';
+import Performance from '../models/Performance';
+import AverageSessions from '../models/AverageSessions';
+import Activity from '../models/Activity';
 
 const API_BASE_URL = 'http://localhost:3000';
-const USE_MOCK_DATA = process.env.REACT_APP_USE_MOCK_DATA === 'false';
+const USE_MOCK_DATA = process.env.REACT_APP_USE_MOCK_DATA === 'true';
 
 const fetchMockData = async (endpoint, userId) => {
   const response = await fetch(`http://localhost:3001/${endpoint}.json`);
   let listUser = await response.json();
   for (let user of listUser) {
-    if (user.id == userId) {
-      return user
-    }
-    if (user.userId == userId) {
-      return user
+    if (user.id == userId || user.userId == userId) {
+      return user;
     }
   }
 };
@@ -28,12 +29,14 @@ export const useUserData = (userId) => {
       try {
         let userData;
         if (USE_MOCK_DATA) {
-          userData = await fetchMockData('user', userId)
+          userData = await fetchMockData('user', userId);
+          console.log('Mock_data');
         } else {
-          let response = await axios.get(`${API_BASE_URL}/user/${userId}`)
-          userData = response.data.data
+          const response = await axios.get(`${API_BASE_URL}/user/${userId}`);
+          userData = response.data.data;
+          console.log('API_data');
         }
-        setUserData(normalizeData(userData));
+        setUserData(new User(userData));
       } catch (err) {
         setError(err);
       } finally {
@@ -41,18 +44,10 @@ export const useUserData = (userId) => {
       }
     };
     fetchUserData();
-    
   }, [userId]);
+
   return { userData, loading, error };
-
 };
-
-const normalizeData = (data) => {
-  if (data.todayScore === undefined) {
-    data.todayScore = data.score;
-  }
-  return data
-}
 
 export const useUserActivity = (userId) => {
   const [activityData, setActivityData] = useState(null);
@@ -64,12 +59,12 @@ export const useUserActivity = (userId) => {
       try {
         let userActivity;
         if (USE_MOCK_DATA) {
-          userActivity = await fetchMockData('activity', userId)
+          userActivity = await fetchMockData('activity', userId);
         } else {
-          let response = await axios.get(`${API_BASE_URL}/user/${userId}/activity`)
-          userActivity = response.data.data
+          const response = await axios.get(`${API_BASE_URL}/user/${userId}/activity`);
+          userActivity = response.data.data;
         }
-        setActivityData(userActivity);
+        setActivityData(new Activity(userActivity));
       } catch (err) {
         setError(err);
       } finally {
@@ -79,6 +74,7 @@ export const useUserActivity = (userId) => {
 
     fetchUserActivity();
   }, [userId]);
+
   return { activityData, loading, error };
 };
 
@@ -92,12 +88,12 @@ export const useUserAverageSessions = (userId) => {
       try {
         let userAverageSessions;
         if (USE_MOCK_DATA) {
-          userAverageSessions = await fetchMockData('average-sessions', userId)
+          userAverageSessions = await fetchMockData('average-sessions', userId);
         } else {
-          let response = await axios.get(`${API_BASE_URL}/user/${userId}/average-sessions`)
-          userAverageSessions = response.data.data
+          const response = await axios.get(`${API_BASE_URL}/user/${userId}/average-sessions`);
+          userAverageSessions = response.data.data;
         }
-        setAverageSessionsData(userAverageSessions);
+        setAverageSessionsData(new AverageSessions(userAverageSessions));
       } catch (err) {
         setError(err);
       } finally {
@@ -107,6 +103,7 @@ export const useUserAverageSessions = (userId) => {
 
     fetchAverageSessionsData();
   }, [userId]);
+
   return { averageSessionsData, loading, error };
 };
 
@@ -118,14 +115,14 @@ export const useUserPerformance = (userId) => {
   useEffect(() => {
     const fetchUserPerformanceData = async () => {
       try {
-        let UserPerformance;
+        let userPerformance;
         if (USE_MOCK_DATA) {
-          UserPerformance = await fetchMockData('performance', userId)
+          userPerformance = await fetchMockData('performance', userId);
         } else {
-          let response = await axios.get(`${API_BASE_URL}/user/${userId}/performance`)
-          UserPerformance = response.data.data
+          const response = await axios.get(`${API_BASE_URL}/user/${userId}/performance`);
+          userPerformance = response.data.data;
         }
-        setUserPerformanceData(UserPerformance);
+        setUserPerformanceData(new Performance(userPerformance));
       } catch (err) {
         setError(err);
       } finally {
@@ -135,5 +132,6 @@ export const useUserPerformance = (userId) => {
 
     fetchUserPerformanceData();
   }, [userId]);
+
   return { userPerformanceData, loading, error };
 };
